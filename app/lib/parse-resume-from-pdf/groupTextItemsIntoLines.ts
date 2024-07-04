@@ -1,4 +1,3 @@
-import React from 'react';
 import { Line, Lines, TextItems } from './types';
 
 export const groupTextItemsIntoLines = (textItems: TextItems): Lines => {
@@ -24,7 +23,7 @@ export const groupTextItemsIntoLines = (textItems: TextItems): Lines => {
   const typicalCharWidth = getTypicalCharWidth(lines.flat());
 
   for (const line of lines) {
-    for (let i = line.length - 1; i >= 0; i--) {
+    for (let i = line.length - 1; i > 0; i--) {
       const currentItem = line[i];
       const leftItem = line[i - 1];
       const leftItemXEnd = leftItem.x + leftItem.width;
