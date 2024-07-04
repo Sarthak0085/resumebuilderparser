@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { getHasUsedAppBefore } from '../lib/redux/local-storage';
 import { OrDivider } from '../components/resumeImport/OrDivider';
 import { SectionWithHeadingAndCreateButton } from '../components/resumeImport/SectionWithHeadingAndButton';
+import ResumeDropzone from '../components/ResumeDropzone';
 
 export default function ImportResume() {
   const [hasUsedAppBefore, setHasUsedAppBefore] = useState(false);
@@ -25,7 +26,7 @@ export default function ImportResume() {
             <h1 className="text-lg font-semibold text-gray-900">
               Import data from an existing resume
             </h1>
-            <h2>Resume Dropdown</h2>
+            <ResumeDropzone onFileUrlChange={onFileUrlChange} className="mt-5" />
             {!hasAddedResume && (
               <>
                 <OrDivider />
@@ -48,6 +49,7 @@ export default function ImportResume() {
               </>
             )}
             <h1 className="font-semibold text-gray-900">Override data with a new resume</h1>
+            <ResumeDropzone onFileUrlChange={onFileUrlChange} className="mt-5" />
           </>
         )}
       </div>

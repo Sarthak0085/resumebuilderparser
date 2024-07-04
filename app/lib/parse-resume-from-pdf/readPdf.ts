@@ -2,11 +2,14 @@ import type { TextItem as PdfjsTextItem } from 'pdfjs-dist/types/src/display/api
 import { TextItem, TextItems } from './types';
 import * as pdfjs from 'pdfjs-dist';
 
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry';
+pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
+
 const readPdf = async (fileUrl: string): Promise<TextItems> => {
   const pdfFile = await pdfjs.getDocument(fileUrl).promise;
   let textItems: TextItems = [];
 
-  for (let i = 0; i <= pdfFile.numPages; i++) {
+  for (let i = 1; i <= pdfFile.numPages; i++) {
     const page = await pdfFile.getPage(i);
     const textContent = await page.getTextContent();
 
