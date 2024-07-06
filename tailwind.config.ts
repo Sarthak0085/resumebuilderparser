@@ -9,12 +9,18 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        // "dot": "url('')"
+        // 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        // 'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        dot: "url('/assets/dots.svg')",
       },
     },
   },
-  plugins: [],
+  corePlugins: {
+    aspectRatio: false,
+  },
+  plugins: [
+    require("@tailwindcss/aspect-ratio"),
+    // require("tailwind-scrollbar")({ nocompatible: true }),
+  ],
 };
 export default config;
